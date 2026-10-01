@@ -1,0 +1,38 @@
+﻿using System;
+
+namespace assignment2fc
+{
+    public readonly record struct CallRecord
+    {
+        public string RecordId { get; }
+        public string DestinationCountry { get; }
+        public double DurationMinutes { get; }
+        public bool IsRoaming { get; }
+
+        public CallRecord(
+            string recordId,
+            string destinationCountry,
+            double durationMinutes,
+            bool isRoaming)
+        {
+            if (string.IsNullOrWhiteSpace(recordId))
+                throw new ArgumentException("RecordId cannot be empty.");
+
+            if (string.IsNullOrWhiteSpace(destinationCountry))
+                throw new ArgumentException("DestinationCountry cannot be empty.");
+
+            if (double.IsNaN(durationMinutes) ||
+                double.IsInfinity(durationMinutes) ||
+                durationMinutes < 0 ||
+                durationMinutes > 10000)
+            {
+                throw new ArgumentException("Duration must be between 0 and 10000 minutes.");
+            }
+
+            RecordId = recordId;
+            DestinationCountry = destinationCountry;
+            DurationMinutes = durationMinutes;
+            IsRoaming = isRoaming;
+        }
+    }
+}

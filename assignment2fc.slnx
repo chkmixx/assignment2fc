@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../assignment2fc.Tests/assignment2fc.Tests.csproj" />
+  <Project Path="assignment2fc.csproj" />
+</Solution>
